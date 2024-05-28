@@ -7,6 +7,8 @@ import {
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
 import Loading from "@/components/loading/loading";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
 
 export default function Layout() {
   const [fontLoading] = useFonts({
@@ -16,5 +18,15 @@ export default function Layout() {
     Inter_700Bold,
   });
 
-  return <>{fontLoading ? <Slot /> : <Loading />}</>;
+  return (
+    <SafeAreaView style={styles.safeContainer}>
+      {fontLoading ? <Slot /> : <Loading />}
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+  },
+});
