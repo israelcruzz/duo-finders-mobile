@@ -1,15 +1,27 @@
 import { tokens } from "@/constants/tokens";
 import {
+  FlatList,
   Image,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+
+const CATEGORIES = ["All games", "Action", "Fight", "MMORPG", "Rpg"];
 
 export default function Home() {
+  const [selectedCategorie, setSelectedCategorie] = useState("All games");
+
+  useEffect(() => {
+    console.log(selectedCategorie);
+  }, [selectedCategorie]);
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -52,6 +64,42 @@ export default function Home() {
           style={styles.input}
           placeholderTextColor={tokens.colors.lightDarkGray}
         />
+      </View>
+
+      <ScrollView
+        contentContainerStyle={styles.scrollViewCategoriesArea}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <FlatList
+          keyExtractor={(item) => item}
+          horizontal
+          contentContainerStyle={styles.categoriesList}
+          data={CATEGORIES}
+          renderItem={({ item }) => (
+            <Pressable
+              style={[
+                styles.categorieItem,
+                selectedCategorie === item && styles.categorieItemsSelected,
+              ]}
+              onPress={() => setSelectedCategorie(item)}
+            >
+              <Text
+                style={[
+                  styles.categorieText,
+                  selectedCategorie === item && styles.categorieTextSelected,
+                ]}
+              >
+                {item}
+              </Text>
+            </Pressable>
+          )}
+        />
+      </ScrollView>
+
+      <View>
+      
       </View>
     </View>
   );
@@ -140,5 +188,29 @@ const styles = StyleSheet.create({
   },
   input: {
     color: tokens.colors.lightDarkGray,
+  },
+  scrollViewCategoriesArea: {
+    height: 36,
+  },
+  categoriesList: {
+    width: "100%",
+    height: 36,
+    gap: 24,
+  },
+  categorieItem: {
+    paddingHorizontal: 16,
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor: tokens.colors.darkBackground,
+    borderRadius: 8,
+  },
+  categorieItemsSelected: {
+    backgroundColor: tokens.colors.primary,
+  },
+  categorieText: {
+    color: tokens.colors.gray,
+  },
+  categorieTextSelected: {
+    color: "#FFFFFF",
   },
 });
