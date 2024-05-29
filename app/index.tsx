@@ -2,8 +2,15 @@ import { tokens } from "@/constants/tokens";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useRouter } from 'expo-router'
 
 export default function Index() {
+    const navigation = useRouter()
+
+    const handleClick = () => {
+        navigation.push("/home")
+    }
+
   return (
     <View style={styles.container}>
       <Image
@@ -20,7 +27,7 @@ export default function Index() {
             Busque por pessoas parecidas com você para jogar contigo!
           </Text>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => handleClick()}>
             <MaterialIcons name="discord" size={24} color="white" />
             <Text style={styles.textButton}>Continuar com o Discord</Text>
           </TouchableOpacity>
