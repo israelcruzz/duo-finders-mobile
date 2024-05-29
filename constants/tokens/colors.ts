@@ -9,4 +9,5 @@ export const colors = {
   gray: "#525252",
   lightDarkGray: "#B8B8B8",
   sub: "#D4D4D8",
+  paragraph: "#A8A8A8"
 };
