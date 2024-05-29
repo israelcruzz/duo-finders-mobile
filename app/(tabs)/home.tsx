@@ -1,5 +1,13 @@
 import { tokens } from "@/constants/tokens";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { Feather } from "@expo/vector-icons";
 
 export default function Home() {
   return (
@@ -11,10 +19,12 @@ export default function Home() {
           <Text style={styles.headingHeaderText}>Games</Text>
         </View>
 
-        <Image
-          source={require("@/app/assets/images/profile-image.png")}
-          style={styles.profileImage}
-        />
+        <TouchableOpacity>
+          <Image
+            source={require("@/app/assets/images/profile-image.png")}
+            style={styles.profileImage}
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.gameAdContainer}>
@@ -33,6 +43,15 @@ export default function Home() {
             <Text style={styles.countGameAd}>4 anúncios</Text>
           </View>
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.searchInput}>
+        <Feather name="search" size={24} color={tokens.colors.lightDarkGray} />
+        <TextInput
+          placeholder="Search Games"
+          style={styles.input}
+          placeholderTextColor={tokens.colors.lightDarkGray}
+        />
       </View>
     </View>
   );
@@ -108,5 +127,18 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: tokens.size.min,
     color: "#666666",
+  },
+  searchInput: {
+    flexDirection: "row",
+    backgroundColor: tokens.colors.darkBackground,
+    borderRadius: 8,
+    width: "100%",
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    alignItems: "center",
+    gap: 16,
+  },
+  input: {
+    color: tokens.colors.lightDarkGray,
   },
 });
