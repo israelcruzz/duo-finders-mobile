@@ -6,8 +6,8 @@ import {
   Inter_600SemiBold,
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
-import Loading from "@/components/loading/loading";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Loading } from "../components/loading/index";
+import { SafeAreaView } from "react-native";
 import { StyleSheet } from "react-native";
 
 export default function Layout() {
