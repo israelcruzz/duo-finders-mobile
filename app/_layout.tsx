@@ -6,9 +6,10 @@ import {
   Inter_600SemiBold,
   Inter_700Bold,
 } from "@expo-google-fonts/inter";
-import { Loading } from "../components/loading/index";
+import {Loading} from "../components/loading/index";
 import { SafeAreaView } from "react-native";
 import { StyleSheet } from "react-native";
+
 
 export default function Layout() {
   const [fontLoading] = useFonts({
