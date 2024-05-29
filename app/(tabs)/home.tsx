@@ -29,8 +29,8 @@ export default function Home() {
               source={require("@/app/assets/images/league-of-legends-logo.png")}
             />
             <Text style={styles.paragraphGameAd}>Ache seu duo agora no</Text>
-            <Text>League of Legends</Text>
-            <Text>4 anúncios</Text>
+            <Text style={styles.headingGameAd}>League of Legends</Text>
+            <Text style={styles.countGameAd}>4 anúncios</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -93,8 +93,20 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   paragraphGameAd: {
-    fontWeight: 500,
+    fontWeight: "500",
     fontSize: tokens.size.min,
     color: tokens.colors.paragraph,
+    marginTop: 12,
+  },
+  headingGameAd: {
+    fontWeight: "600",
+    fontSize: tokens.size.normal,
+    color: "#FFFFFF",
+    marginBottom: 4,
+  },
+  countGameAd: {
+    fontWeight: "500",
+    fontSize: tokens.size.min,
+    color: "#666666",
   },
 });
