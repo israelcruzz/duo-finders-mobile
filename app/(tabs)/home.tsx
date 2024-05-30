@@ -12,8 +12,9 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
-const CATEGORIES = ["All games", "Action", "Fight", "MMORPG", "Rpg"];
+const CATEGORIES = ["All games", "Ação", "Luta", "MMORPG", "Rpg"];
 
 export default function Home() {
   const [selectedCategorie, setSelectedCategorie] = useState("All games");
@@ -66,40 +67,84 @@ export default function Home() {
         />
       </View>
 
-      <ScrollView
-        contentContainerStyle={styles.scrollViewCategoriesArea}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-      >
-        <FlatList
-          keyExtractor={(item) => item}
-          horizontal
-          contentContainerStyle={styles.categoriesList}
-          data={CATEGORIES}
-          renderItem={({ item }) => (
-            <Pressable
-              style={[
-                styles.categorieItem,
-                selectedCategorie === item && styles.categorieItemsSelected,
-              ]}
-              onPress={() => setSelectedCategorie(item)}
-            >
-              <Text
-                style={[
-                  styles.categorieText,
-                  selectedCategorie === item && styles.categorieTextSelected,
-                ]}
-              >
-                {item}
-              </Text>
-            </Pressable>
-          )}
-        />
-      </ScrollView>
-
       <View>
-      
+        <ScrollView
+          contentContainerStyle={styles.scrollViewCategoriesArea}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+        >
+          <FlatList
+            keyExtractor={(item) => item}
+            horizontal
+            contentContainerStyle={styles.categoriesList}
+            data={CATEGORIES}
+            renderItem={({ item }) => (
+              <Pressable
+                style={[
+                  styles.categorieItem,
+                  selectedCategorie === item && styles.categorieItemsSelected,
+                ]}
+                onPress={() => setSelectedCategorie(item)}
+              >
+                <Text
+                  style={[
+                    styles.categorieText,
+                    selectedCategorie === item && styles.categorieTextSelected,
+                  ]}
+                >
+                  {item}
+                </Text>
+              </Pressable>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
+        </ScrollView>
+      </View>
+
+      <View style={styles.gameArea}>
+        <View style={styles.gameTextArea}>
+          <Text style={styles.gameText}>Jogos</Text>
+          <Text style={styles.gameTextLink}>Ver Mais</Text>
+        </View>
+
+        <ScrollView>
+          <View style={styles.gameAreaCards}>
+            <TouchableOpacity style={styles.gameCard}>
+              <Image
+                source={require("@/app/assets/images/league-of-legends-image.png")}
+                style={styles.gameCardImage}
+              />
+
+              <Text style={styles.gameCardTextArea}>
+                <Text style={styles.gameCardTitle}>League of Legends </Text>
+                <Text style={styles.gameCardDescription}> 4 anúncios</Text>
+              </Text>
+
+              <LinearGradient
+                colors={["rgba(0,0,0,0)", "rgba(0,0,0,1)"]}
+                style={styles.gradient}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.gameCard}>
+              <Image
+                source={require("@/app/assets/images/league-of-legends-image.png")}
+                style={styles.gameCardImage}
+              />
+
+              <Text style={styles.gameCardTextArea}>
+                <Text style={styles.gameCardTitle}>League of Legends </Text>
+                <Text style={styles.gameCardDescription}> 4 anúncios</Text>
+              </Text>
+
+              <LinearGradient
+                colors={["rgba(0,0,0,0)", "rgba(0,0,0,1)"]}
+                style={styles.gradient}
+              />
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -212,5 +257,67 @@ const styles = StyleSheet.create({
   },
   categorieTextSelected: {
     color: "#FFFFFF",
+  },
+  gameArea: {
+    width: "100%",
+    height: "100%",
+  },
+  gameTextArea: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  gameText: {
+    color: "#FFFFFF",
+    fontSize: tokens.size.logo,
+    fontWeight: "600",
+  },
+  gameTextLink: {
+    color: tokens.colors.primary,
+  },
+  gameAreaCards: {
+    flexDirection: "row",
+    gap: 12,
+    flexWrap: "wrap",
+  },
+
+  gameCard: {
+    width: 175,
+    height: 216,
+    borderRadius: 12,
+  },
+  gameCardImage: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 24,
+    objectFit: "cover",
+  },
+  gameCardTextArea: {
+    position: "absolute",
+    bottom: 0,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    zIndex: 90,
+  },
+  gameCardTitle: {
+    fontWeight: "700",
+    color: "#FFFFFF",
+    fontSize: tokens.size.med,
+  },
+  gameCardDescription: {
+    fontWeight: "700",
+    color: tokens.colors.sub,
+    fontSize: tokens.size.sub,
+  },
+  gradient: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "90%",
+    opacity: 1,
+    borderRadius: 24,
   },
 });
