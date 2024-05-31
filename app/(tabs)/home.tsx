@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import GameCard from "@/components/game-card";
 import GameCardArea from "@/components/game-card-area";
 import SearchInput from "@/components/search-input";
+import Avatar from "@/components/avatar";
 
 const CATEGORIES = ["All games", "Ação", "Luta", "MMORPG", "Rpg"];
 
@@ -35,12 +36,9 @@ export default function Home() {
             <Text style={styles.headingHeaderText}>Games</Text>
           </View>
 
-          <TouchableOpacity>
-            <Image
-              source={require("@/app/assets/images/profile-image.png")}
-              style={styles.profileImage}
-            />
-          </TouchableOpacity>
+          <View style={styles.avatarArea}>
+            <Avatar />
+          </View>
         </View>
 
         <View style={styles.gameAdContainer}>
@@ -146,11 +144,6 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontWeight: "500",
   },
-  profileImage: {
-    borderRadius: 60,
-    width: 56,
-    height: 56,
-  },
   gameAdContainer: {
     width: "100%",
     height: 145,
@@ -185,19 +178,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: tokens.size.min,
     color: "#666666",
-  },
-  searchInput: {
-    flexDirection: "row",
-    backgroundColor: tokens.colors.darkBackground,
-    borderRadius: 8,
-    width: "100%",
-    paddingHorizontal: 24,
-    paddingVertical: 16,
-    alignItems: "center",
-    gap: 16,
-  },
-  input: {
-    color: tokens.colors.lightDarkGray,
   },
   scrollViewCategoriesArea: {
     height: 36,
@@ -243,9 +223,8 @@ const styles = StyleSheet.create({
   gameTextLink: {
     color: tokens.colors.primary,
   },
-  gameAreaCards: {
-    flexDirection: "row",
-    gap: 12,
-    flexWrap: "wrap",
+  avatarArea: {
+    height: 56,
+    width: 56,
   },
 });
