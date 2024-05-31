@@ -3,6 +3,8 @@ import Heading from "@/components/heading";
 import { tokens } from "@/constants/tokens";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import SectionText from "@/components/section-text";
+import AdTextSection from "@/components/ad-text-section";
 
 export default function Profile() {
   return (
@@ -26,7 +28,9 @@ export default function Profile() {
         </TouchableOpacity>
       </View>
 
-      <Heading title="Seus Anúncios" />
+      <SectionText title="Seus Anúncios" />
+
+      <AdTextSection head="Nickname" description="mizukyy"  />
     </View>
   );
 }

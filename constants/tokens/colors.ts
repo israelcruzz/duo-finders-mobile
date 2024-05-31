@@ -9,5 +9,7 @@ export const colors = {
   gray: "#525252",
   lightDarkGray: "#B8B8B8",
   sub: "#D4D4D8",
-  paragraph: "#A8A8A8"
+  paragraph: "#A8A8A8",
+  red: "#E31616",
+  head: "#C4C4C6"
 };
