@@ -48,7 +48,7 @@ export default function MeAd({
 const styles = StyleSheet.create({
   container: {
     width: 175,
-    backgroundColor: tokens.colors.darkBackground,
+    backgroundColor: tokens.colors.lightGray,
     gap: 16,
     padding: 20,
     borderRadius: 10,
