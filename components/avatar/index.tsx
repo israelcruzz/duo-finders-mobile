@@ -5,7 +5,7 @@ export default function Avatar() {
   const navigation = useRouter();
 
   const handleClickAvatar = () => {
-    navigation.push("/game/a");
+    navigation.push("/profile");
   };
 
   return (

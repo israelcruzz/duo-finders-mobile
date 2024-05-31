@@ -1,18 +1,37 @@
 import { tokens } from "@/constants/tokens";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default function GameCard() {
+interface GameCardProps {
+  id: string;
+  imageUri: string;
+  name: string;
+  countAds: number;
+}
+
+export default function GameCard({
+  name,
+  imageUri,
+  countAds,
+  id,
+}: GameCardProps) {
+  const router = useRouter();
+
+  const handleClickCard = () => {
+    router.push(`/game/${id}`);
+  };
+
   return (
-    <TouchableOpacity style={styles.gameCard}>
+    <TouchableOpacity style={styles.gameCard} onPress={() => handleClickCard()}>
       <Image
         source={require("@/app/assets/images/league-of-legends-image.png")}
         style={styles.gameCardImage}
       />
 
       <Text style={styles.gameCardTextArea}>
-        <Text style={styles.gameCardTitle}>League of Legends </Text>
-        <Text style={styles.gameCardDescription}> 4 anúncios</Text>
+        <Text style={styles.gameCardTitle}>{name}</Text>
+        <Text style={styles.gameCardDescription}> {countAds} anúncios</Text>
       </Text>
 
       <LinearGradient

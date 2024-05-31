@@ -15,6 +15,7 @@ import GameCard from "@/components/game-card";
 import GameCardArea from "@/components/game-card-area";
 import SearchInput from "@/components/search-input";
 import Avatar from "@/components/avatar";
+import { Feather } from "@expo/vector-icons";
 
 const CATEGORIES = ["All games", "Ação", "Luta", "MMORPG", "Rpg"];
 
@@ -26,89 +27,103 @@ export default function Home() {
   }, [selectedCategorie]);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {/* Header */}
-        <View style={styles.header}>
-          <View style={styles.headerText}>
-            <Text style={styles.paragraphHeaderText}>Explorar</Text>
-            <Text style={styles.headingHeaderText}>Games</Text>
-          </View>
-
-          <View style={styles.avatarArea}>
-            <Avatar />
-          </View>
+    <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <View style={styles.headerText}>
+          <Text style={styles.paragraphHeaderText}>Explorar</Text>
+          <Text style={styles.headingHeaderText}>Games</Text>
         </View>
 
-        <View style={styles.gameAdContainer}>
-          <TouchableOpacity style={styles.buttonGameAd}>
-            <Image
-              source={require("@/app/assets/images/league-of-legends-ad-cover.png")}
-              style={styles.imageGameAd}
-            />
-
-            <View style={styles.textAreaGameAd}>
-              <Image
-                source={require("@/app/assets/images/league-of-legends-logo.png")}
-              />
-              <Text style={styles.paragraphGameAd}>Ache seu duo agora no</Text>
-              <Text style={styles.headingGameAd}>League of Legends</Text>
-              <Text style={styles.countGameAd}>4 anúncios</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-
-        <SearchInput />
-
-        <View>
-          <ScrollView
-            contentContainerStyle={styles.scrollViewCategoriesArea}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-          >
-            <FlatList
-              keyExtractor={(item) => item}
-              horizontal
-              contentContainerStyle={styles.categoriesList}
-              data={CATEGORIES}
-              renderItem={({ item }) => (
-                <Pressable
-                  style={[
-                    styles.categorieItem,
-                    selectedCategorie === item && styles.categorieItemsSelected,
-                  ]}
-                  onPress={() => setSelectedCategorie(item)}
-                >
-                  <Text
-                    style={[
-                      styles.categorieText,
-                      selectedCategorie === item &&
-                        styles.categorieTextSelected,
-                    ]}
-                  >
-                    {item}
-                  </Text>
-                </Pressable>
-              )}
-              showsHorizontalScrollIndicator={false}
-            />
-          </ScrollView>
-        </View>
-
-        <View style={styles.gameArea}>
-          <View style={styles.gameTextArea}>
-            <Text style={styles.gameText}>Jogos</Text>
-            <Text style={styles.gameTextLink}>Ver Mais</Text>
-          </View>
-
-          <GameCardArea>
-            <GameCard />
-            <GameCard />
-          </GameCardArea>
+        <View style={styles.avatarArea}>
+          <Avatar />
         </View>
       </View>
-    </ScrollView>
+
+      <View style={styles.gameAdContainer}>
+        <TouchableOpacity style={styles.buttonGameAd}>
+          <Image
+            source={require("@/app/assets/images/league-of-legends-ad-cover.png")}
+            style={styles.imageGameAd}
+          />
+
+          <View style={styles.textAreaGameAd}>
+            <Image
+              source={require("@/app/assets/images/league-of-legends-logo.png")}
+            />
+            <Text style={styles.paragraphGameAd}>Ache seu duo agora no</Text>
+            <Text style={styles.headingGameAd}>League of Legends</Text>
+            <Text style={styles.countGameAd}>4 anúncios</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <SearchInput />
+
+      <View>
+        <ScrollView
+          contentContainerStyle={styles.scrollViewCategoriesArea}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+        >
+          <FlatList
+            keyExtractor={(item) => item}
+            horizontal
+            contentContainerStyle={styles.categoriesList}
+            data={CATEGORIES}
+            renderItem={({ item }) => (
+              <Pressable
+                style={[
+                  styles.categorieItem,
+                  selectedCategorie === item && styles.categorieItemsSelected,
+                ]}
+                onPress={() => setSelectedCategorie(item)}
+              >
+                <Text
+                  style={[
+                    styles.categorieText,
+                    selectedCategorie === item && styles.categorieTextSelected,
+                  ]}
+                >
+                  {item}
+                </Text>
+              </Pressable>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
+        </ScrollView>
+      </View>
+
+      <View style={styles.gameArea}>
+        <View style={styles.gameTextArea}>
+          <Text style={styles.gameText}>Jogos</Text>
+          <Text style={styles.gameTextLink}>Ver Mais</Text>
+        </View>
+        <ScrollView
+          horizontal
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
+          <GameCardArea>
+            {Array.from({ length: 10 }).map((_, index) => {
+              return (
+                <GameCard
+                  name="League of Legends"
+                  countAds={5}
+                  id={index.toString()}
+                  imageUri=""
+                  key={index}
+                />
+              );
+            })}
+          </GameCardArea>
+        </ScrollView>
+      </View>
+      <TouchableOpacity style={styles.createAdArea}>
+        <Feather name="plus" size={24} color="white" />
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -225,5 +240,18 @@ const styles = StyleSheet.create({
   avatarArea: {
     height: 56,
     width: 56,
+  },
+  createAdArea: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    marginHorizontal: 20,
+    marginVertical: 24 + 16,
+    width: 56,
+    height: 56,
+    backgroundColor: tokens.colors.primary,
+    borderRadius: 80,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

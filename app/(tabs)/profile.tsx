@@ -35,7 +35,7 @@ export default function Profile() {
       </View>
 
       <SectionText title="Seus Anúncios" />
-      <ScrollView>
+      <ScrollView horizontal showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
         <View style={styles.areaAds}>
           {Array.from({ length: 4 }).map((_, index) => {
             return (

@@ -33,7 +33,7 @@ export default function Game({}) {
         <Text style={styles.description}>512 Anúncios</Text>
       </View>
 
-      <ScrollView horizontal contentContainerStyle={styles.scrollArea}>
+      <ScrollView horizontal contentContainerStyle={styles.scrollArea} showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
         {Array.from({ length: 4 }).map((_, index) => {
           return (
             <Ad

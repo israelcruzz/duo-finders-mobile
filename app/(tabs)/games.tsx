@@ -15,7 +15,7 @@ export default function Games() {
       <ScrollView contentContainerStyle={styles.scrollArea}  >
         <GameCardArea>
           {Array.from({ length: 10 }).map((_, index) => {
-            return <GameCard key={index} />;
+            return <GameCard key={index} countAds={index} id={index.toString()} imageUri="" name="League of Legends" />;
           })}
         </GameCardArea>
       </ScrollView>

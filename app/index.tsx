@@ -12,10 +12,10 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 export default function Index() {
-  const navigation = useRouter();
+  const router = useRouter();
 
   const handleClick = () => {
-    navigation.push("/home");
+    router.push("/home");
   };
 
   return (
