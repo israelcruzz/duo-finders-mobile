@@ -23,20 +23,22 @@ export default function MeAd({
 }: MeAdProps) {
   return (
     <View style={styles.container}>
-      <AdTextSection head="Nome" description={name} />
-      <AdTextSection
-        head="Tempo de Jogo"
-        description={`${yearsPlaying} anos`}
-      />
-      <AdTextSection
-        head="Disponibilidade"
-        description={`${weekDays} - ${hourStart}|${hourEnd}hrs`}
-      />
-      <AdTextSection
-        head="Chamada de Áudio"
-        description={useVoiceChannel ? "Sim" : "Não"}
-        color={{ active: useVoiceChannel }}
-      />
+      <View style={styles.adAreaText}>
+        <AdTextSection head="Nome" description={name} />
+        <AdTextSection
+          head="Tempo de Jogo"
+          description={`${yearsPlaying} anos`}
+        />
+        <AdTextSection
+          head="Disponibilidade"
+          description={`${weekDays} - ${hourStart}|${hourEnd}hrs`}
+        />
+        <AdTextSection
+          head="Chamada de Áudio"
+          description={useVoiceChannel ? "Sim" : "Não"}
+          color={{ active: useVoiceChannel }}
+        />
+      </View>
 
       <TouchableOpacity style={styles.deleteButton}>
         <Text style={styles.deleteButtonText}>Apagar</Text>
@@ -47,11 +49,16 @@ export default function MeAd({
 
 const styles = StyleSheet.create({
   container: {
-    width: 175,
+    width: 200,
+    height: 328,
     backgroundColor: tokens.colors.lightGray,
     gap: 16,
     padding: 20,
     borderRadius: 10,
+    justifyContent: "space-between",
+  },
+  adAreaText: {
+    gap: 16,
   },
   deleteButton: {
     width: "100%",

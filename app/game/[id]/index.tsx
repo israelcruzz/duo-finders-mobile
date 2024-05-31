@@ -3,7 +3,7 @@ import ButtonBack from "@/components/button-back";
 import SectionText from "@/components/section-text";
 import { tokens } from "@/constants/tokens";
 import { useRoute } from "@react-navigation/native";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 interface GameParams {
   key: string;
@@ -33,20 +33,22 @@ export default function Game({}) {
         <Text style={styles.description}>512 Anúncios</Text>
       </View>
 
-      {Array.from({ length: 4 }).map((_, index) => {
-            return (
-              <Ad
-                id={index.toString()}
-                name="mizuky"
-                key={index}
-                hourEnd={20}
-                hourStart={16}
-                useVoiceChannel={index % 2 === 0}
-                weekDays="seg,ter"
-                yearsPlaying={6}
-              />
-            );
-          })}
+      <ScrollView horizontal contentContainerStyle={styles.scrollArea}>
+        {Array.from({ length: 4 }).map((_, index) => {
+          return (
+            <Ad
+              id={index.toString()}
+              name="mizuky"
+              key={index}
+              hourEnd={20}
+              hourStart={16}
+              useVoiceChannel={index % 2 === 0}
+              weekDays="seg,ter,qua"
+              yearsPlaying={6}
+            />
+          );
+        })}
+      </ScrollView>
     </View>
   );
 }
@@ -80,4 +82,7 @@ const styles = StyleSheet.create({
   areaCardText: {
     gap: 4,
   },
+  scrollArea: {
+    gap: 12
+  }
 });

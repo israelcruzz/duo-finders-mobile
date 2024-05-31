@@ -24,20 +24,22 @@ export default function Ad({
 }: AdProps) {
   return (
     <View style={styles.container}>
-      <AdTextSection head="Nome" description={name} />
-      <AdTextSection
-        head="Tempo de Jogo"
-        description={`${yearsPlaying} anos`}
-      />
-      <AdTextSection
-        head="Disponibilidade"
-        description={`${weekDays} - ${hourStart}|${hourEnd}hrs`}
-      />
-      <AdTextSection
-        head="Chamada de Áudio"
-        description={useVoiceChannel ? "Sim" : "Não"}
-        color={{ active: useVoiceChannel }}
-      />
+      <View style={styles.adAreaText}>
+        <AdTextSection head="Nome" description={name} />
+        <AdTextSection
+          head="Tempo de Jogo"
+          description={`${yearsPlaying} anos`}
+        />
+        <AdTextSection
+          head="Disponibilidade"
+          description={`${weekDays} - ${hourStart}|${hourEnd}hrs`}
+        />
+        <AdTextSection
+          head="Chamada de Áudio"
+          description={useVoiceChannel ? "Sim" : "Não"}
+          color={{ active: useVoiceChannel }}
+        />
+      </View>
 
       <TouchableOpacity style={styles.viewDiscordButton}>
         <Ionicons name="game-controller" size={24} color="white" />
@@ -49,11 +51,16 @@ export default function Ad({
 
 const styles = StyleSheet.create({
   container: {
-    width: 175,
+    width: 200,
+    height: 328,
     backgroundColor: tokens.colors.lightGray,
     gap: 16,
     padding: 20,
     borderRadius: 10,
+    justifyContent: 'space-between'
+  },
+  adAreaText: {
+    gap: 16
   },
   viewDiscordButton: {
     width: "100%",
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 8
+    gap: 8,
   },
   viewDiscordButtonText: {
     textAlign: "center",

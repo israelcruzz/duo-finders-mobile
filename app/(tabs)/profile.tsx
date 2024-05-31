@@ -46,7 +46,7 @@ export default function Profile() {
                 hourEnd={20}
                 hourStart={16}
                 useVoiceChannel={index % 2 === 0}
-                weekDays="seg,ter"
+                weekDays="seg,ter,qua"
                 yearsPlaying={6}
               />
             );
