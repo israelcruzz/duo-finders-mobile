@@ -1,4 +1,6 @@
+import Ad from "@/components/ad";
 import ButtonBack from "@/components/button-back";
+import SectionText from "@/components/section-text";
 import { tokens } from "@/constants/tokens";
 import { useRoute } from "@react-navigation/native";
 import { Image, StyleSheet, Text, View } from "react-native";
@@ -25,6 +27,26 @@ export default function Game({}) {
           <ButtonBack />
         </View>
       </View>
+
+      <View style={styles.areaCardText}>
+        <SectionText title="League of Legends" />
+        <Text style={styles.description}>512 Anúncios</Text>
+      </View>
+
+      {Array.from({ length: 4 }).map((_, index) => {
+            return (
+              <Ad
+                id={index.toString()}
+                name="mizuky"
+                key={index}
+                hourEnd={20}
+                hourStart={16}
+                useVoiceChannel={index % 2 === 0}
+                weekDays="seg,ter"
+                yearsPlaying={6}
+              />
+            );
+          })}
     </View>
   );
 }
@@ -49,5 +71,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     margin: 12,
+  },
+  description: {
+    fontSize: tokens.size.sub,
+    color: tokens.colors.paragraph,
+    fontWeight: "400",
+  },
+  areaCardText: {
+    gap: 4,
   },
 });
