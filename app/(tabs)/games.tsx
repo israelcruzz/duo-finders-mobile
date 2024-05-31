@@ -1,10 +1,11 @@
+import Heading from "@/components/heading";
 import { tokens } from "@/constants/tokens";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Games() {
   return (
     <View style={styles.container}>
-      <Text>oi</Text>
+      <Heading title="Games" />
     </View>
   );
 }
