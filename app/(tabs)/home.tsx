@@ -10,7 +10,6 @@ import {
   View,
   ScrollView,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import GameCard from "@/components/game-card";
 import GameCardArea from "@/components/game-card-area";
