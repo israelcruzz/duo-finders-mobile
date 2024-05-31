@@ -6,6 +6,8 @@ export default function Games() {
   return (
     <View style={styles.container}>
       <Heading title="Games" />
+
+      
     </View>
   );
 }

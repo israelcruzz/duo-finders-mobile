@@ -14,6 +14,7 @@ import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import GameCard from "@/components/game-card";
 import GameCardArea from "@/components/game-card-area";
+import SearchInput from "@/components/search-input";
 
 const CATEGORIES = ["All games", "Ação", "Luta", "MMORPG", "Rpg"];
 
@@ -60,18 +61,7 @@ export default function Home() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.searchInput}>
-          <Feather
-            name="search"
-            size={24}
-            color={tokens.colors.lightDarkGray}
-          />
-          <TextInput
-            placeholder="Search Games"
-            style={styles.input}
-            placeholderTextColor={tokens.colors.lightDarkGray}
-          />
-        </View>
+        <SearchInput />
 
         <View>
           <ScrollView
