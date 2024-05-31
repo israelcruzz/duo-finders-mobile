@@ -13,6 +13,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import GameCard from "@/components/game-card";
+import GameCardArea from "@/components/game-card-area";
 
 const CATEGORIES = ["All games", "Ação", "Luta", "MMORPG", "Rpg"];
 
@@ -114,10 +115,10 @@ export default function Home() {
             <Text style={styles.gameTextLink}>Ver Mais</Text>
           </View>
 
-          <View style={styles.gameAreaCards}>
+          <GameCardArea>
             <GameCard />
             <GameCard />
-          </View>
+          </GameCardArea>
         </View>
       </View>
     </ScrollView>
