@@ -1,10 +1,16 @@
 import Avatar from "@/components/avatar";
 import Heading from "@/components/heading";
 import { tokens } from "@/constants/tokens";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import SectionText from "@/components/section-text";
-import AdTextSection from "@/components/ad-text-section";
+import MeAd from "@/components/me-ad";
 
 export default function Profile() {
   return (
@@ -29,8 +35,24 @@ export default function Profile() {
       </View>
 
       <SectionText title="Seus Anúncios" />
-
-      <AdTextSection head="Nickname" description="mizukyy"  />
+      <ScrollView>
+        <View style={styles.areaAds}>
+          {Array.from({ length: 4 }).map((_, index) => {
+            return (
+              <MeAd
+                id={index.toString()}
+                name="mizuky"
+                key={index}
+                hourEnd={20}
+                hourStart={16}
+                useVoiceChannel={index % 2 === 0}
+                weekDays="seg,ter"
+                yearsPlaying={6}
+              />
+            );
+          })}
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -68,5 +90,11 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 0.6)",
     fontWeight: "400",
     fontSize: 16,
+  },
+  areaAds: {
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 12,
   },
 });

@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   headText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "400",
     color: tokens.colors.head,
   },
   normalText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "700",
     color: "#FFFFFF",
   },
